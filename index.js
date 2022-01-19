@@ -4,13 +4,6 @@ const fs = require("fs");
 const app = express();
 let PORT = 8080 || process.env.PORT;
 
-// let productos = ["lentes ", "casco ", "jean ", "zapatos "];
-
-// let random = Math.floor(Math.random() * productos.length);
-// console.log(random);
-// let randomValue = productos[random];
-// console.log(randomValue);
-
 class Contenedor {
   productos = [];
 
@@ -24,21 +17,6 @@ class Contenedor {
     const contenido = JSON.stringify(leer)
     console.log(contenido);
     return contenido
-    /*fs.readFile('productos.txt', 'utf-8',(error, contenido)=>{
-        if (error) {
-            throw new Error(`Error en lectura: ${error} `)
-        }
-        console.log('Lectura Correcta');
-        const verArchivo = JSON.parse(contenido)
-        return verArchivo
-    });
-    /*try {
-      const leer = fs.readFileSync("productos.txt", "utf-8");
-      console.log(leer);
-      return leer;
-    } catch (err) {
-      throw new Erro(`Erro en lectura: ${err.message}`);
-    }*/
   }
 
   leerArrayRandom() {
@@ -57,7 +35,6 @@ class Contenedor {
 }
 
 const listarProductos = new Contenedor();
-//listarProductos.leerArray();
 listarProductos.leerArrayRandom();
 
 app.get("/", function (req, res) {
