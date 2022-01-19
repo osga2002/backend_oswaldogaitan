@@ -1,0 +1,20 @@
+[
+    {
+        "producto":"Nevera",
+        "Price":1500000,
+        "marca":"Samsumg",
+        "id":1
+    },
+    {
+        "producto":"Televisor 70",
+        "Price":2700000,
+        "marca":"Samsumg",
+        "id":2
+    },
+    {
+        "producto":"Licuadora",
+        "Price":135000,
+        "marca":"Oster",
+        "id":3
+    }
+]
