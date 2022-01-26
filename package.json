@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node tu-script-main.js"
+    "start": "index.js"
   },
   "dependencies": {
     "express": "^4.17.2"
