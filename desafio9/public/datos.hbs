@@ -1,0 +1,78 @@
+<div class="container-fluid">
+<h1 class="mt-4 text-center" >Administración de Productos</h1>
+<div class="row">
+    <div class="col-sm-6">
+        <form method="" action="" class="w-70" onsubmit="return mostrarProductos(this)">
+            <h2 class="text-center">Crear Producto</h2>
+            <div class="d-flex flex-column justify-content-center">
+                <label>Ingrese el Producto: </label>
+                <input type="text" name="name" id="name" class="form-control">
+                <br>
+                <label>Modelo: </label>
+                <input type="number" name="modelo" id="modelo" class="form-control">
+                <br>
+                <label>Precio: </label>
+                <input type="text" name="precio" id="precio" class="form-control">
+                <br>
+                <label>Referencia :</label>
+                <input type="number" name="referencia" id="referencia" class="form-control">
+            </div>
+            <br>
+            <div class="d-flex justify-content-center">
+                <button class="btn btn-sm btn-success mt-3 mb-5" type="submit">Registrar</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-6">        
+        <h2>Productos Creados</h2>
+            {{#if listaProductos.error }}
+                <h3 class="alert alert-danger">no se encontraron datos</h1>
+            {{else}}
+                <div class="table-responsive">
+                    <table id="tablaProductos" class="table table-sm table-hover">
+                        <thead class="thead-dark">
+                            <tr class="bg-info">
+                                <th>Producto</th>
+                                <th>Modelo</th>
+                                <th>Precio</th>
+                                <th>referencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each listaProductos}}
+                            <tr>
+                                <td id="nombre">
+                                    {{this.name}}
+                                </td>
+                                <td class="modelo">
+                                    {{this.modelo}}
+                                </td>
+                                <td class="precio">
+                                    {{this.precio}}
+                                </td>
+                                <td class="referencia">
+                                    {{this.referencia}}
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="offset-sm-4 col-sm-4">
+        <form onsubmit="return addMessage(this)" class="d-flex flex-column border m-2">
+            <h6 class="text-center">Centro de Mensajes</h6>
+            <input type="text" id="nameChat" placeholder="Tu nombre" class="form-control-sm m-1">
+            <input type="text" id="text" placeholder="Cuentanos algo" class="form-control-sm m-1">
+            <button type="submit" class="btn-primary container w-50">Enviar</button>
+        </form>
+    </div>
+    <div class="col-sm-4">
+        <p></p>
+    </div>
+</div>
+<script src="./js/main.js"></script>
