@@ -1,4 +1,7 @@
 
 ###> symfony/framework-bundle ###
 /node_modules/
+/desafio8/node_modules/
+/desafio9/node_modules/
+/proyecto/node_modules/
 ###< symfony/framework-bundle ###

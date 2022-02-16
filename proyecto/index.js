@@ -1,9 +1,10 @@
 const express = require("express");
 const fs = require("fs");
-const { Router} = require("express")
+const { Router } = require("express")
 
 const app = express();
 const productos = Router();
+const carrito = Router();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -116,9 +117,9 @@ class Contenedor {
 }
 
 const listarProductos = new Contenedor();
-listarProductos.listadoProductos();
+//listarProductos.listadoProductos();
 
-app.get("/", function (req, res) {
+productos.get("/:id", function (req, res) {
   if (listarProductos.length ===0) {    
     return res.send("<h1>No hay PRODUCTOS<h1>");
   }else{
@@ -126,15 +127,18 @@ app.get("/", function (req, res) {
     
   }
 });
+carrito.get("/:id", function (req, res) {
+  res.send('ok')
+});
 
-app.get("/api/productos", function (req, res) {
+productos.get("/api/productos", function (req, res) {
   let resp = listarProductos.getAll().length !== 0
       ? { productos: listarProductos.getAll() }
       : { error: 'No hay Productos' }
   res.json(resp)
 });
 
-app.get("/api/productos/:id", function (req, res) {
+productos.get("/api/productos/:id", function (req, res) {
   const { id } = req.params;
     let resp = listarProductos.getById(parseInt(id))
     ? { Producto_Encontrado:listarProductos.getById(parseInt(id)) }
@@ -142,7 +146,7 @@ app.get("/api/productos/:id", function (req, res) {
     res.json( resp )
 });
 
-app.post("/api/productosGuardar/", function (req, res) {
+productos.post("/", function (req, res) {
   let prod = {"producto":"Sala", "Price":1800000,"marca":"Marlente"}
   let resp = listarProductos.save(prod)
     ? { productos: listarProductos.save(prod)}
@@ -150,14 +154,14 @@ app.post("/api/productosGuardar/", function (req, res) {
     res.json( resp )
 });
 
-app.put("/api/productos/:id", function (req, res) {
+productos.put("/:id", function (req, res) {
   const { id } = req.params;
   let resp = listarProductos.update(parseInt(id), req.body)
   ? { productos: listarProductos.update(parseInt(id), req.body) }
   : { error: 'error al actualizar el producto' }
   res.json( resp )
 });
-app.delete("/api/productos/:id", function (req, res) {
+productos.delete("/:id", function (req, res) {
     const { id } = req.params;
     res.json({
         msg: p.deleteById(parseInt(id))
@@ -166,6 +170,8 @@ app.delete("/api/productos/:id", function (req, res) {
     })
 });
 
+app.use('./api/productos', productos)
+app.use('./api/carrito', carrito)
 app.listen(port, () => {
   console.log(`Servidor http escuchando en http://localhost:${port}`);
 });
