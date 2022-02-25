@@ -1,0 +1,62 @@
+[
+    {
+        "producto": "Televisor 70",
+        "price": 2700000,
+        "marca": "Samsumg",
+        "id": 1
+    },
+    {
+        "producto": "Espiritu Santo",
+        "price": 8888,
+        "marca": "el Cielo",
+        "id": 2
+    },
+    {
+        "producto": "El Ayudador",
+        "price": 8888,
+        "marca": "el Cielo",
+        "id": 3
+    },
+    {
+        "producto": "El Ayudador",
+        "price": 8888,
+        "marca": "el Cielo",
+        "id": 4
+    },
+    {
+        "producto": "El Ayudador",
+        "price": 8888,
+        "marca": "el Cielo",
+        "id": 6
+    },
+    {
+        "producto": "Mi señor y Salvador",
+        "price": 99999,
+        "marca": "La Cruz",
+        "id": 7
+    },
+    {
+        "producto": "Mi señor y Salvador",
+        "price": 99999,
+        "marca": "La Cruz",
+        "id": 8
+    },
+    {
+        "producto": "Todo es Posible en Ti",
+        "price": 99999,
+        "marca": "La Cruz",
+        "id": 9
+    },
+    {
+        "producto": "Todo es Posible en Ti",
+        "price": 99999,
+        "marca": "La Cruz",
+        "id": 10
+    },
+    {
+        "producto": "Te amo Jesús!!",
+        "price": 1000000,
+        "marca": "Mi señor",
+        "id": 11
+    }
+]

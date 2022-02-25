@@ -1,0 +1,50 @@
+[
+    {
+        "cliente": "Johana Gaitan",
+        "Valor": 135000,
+        "cantidad": "2",
+        "id": 3
+    },
+    {
+        "cliente": "Alison Gaitan",
+        "Valor": 135000,
+        "cantidad": "1",
+        "id": 4
+    },
+    {
+        "cliente": "Saray Fuentes",
+        "cantidad": "10",
+        "timestamp": "Thu Feb 24 2022 00:41:09 GMT-0500 (hora estándar de Colombia)",
+        "id": 5
+    },
+    {
+        "cliente": "Jesus de Nazareth",
+        "cantidad": "77",
+        "timestamp": "Thu Feb 24 2022 21:47:35 GMT-0500 (hora estándar de Colombia)",
+        "id": 6
+    },
+    {
+        "cliente": "Jesus de Nazareth",
+        "timestamp": "Thu Feb 24 2022 22:37:42 GMT-0500 (hora estándar de Colombia)",
+        "id": 7
+    },
+    {
+        "cliente": "Jesus de Nazareth",
+        "productos": [
+            {
+                "producto": "Espiritu Santo",
+                "price": 8888,
+                "marca": "el Cielo",
+                "id": 2
+            },
+            {
+                "producto": "Espiritu Santo",
+                "price": 8888,
+                "marca": "el Cielo",
+                "id": 2
+            }
+        ],
+        "timestamp": "Thu Feb 24 2022 22:39:57 GMT-0500 (hora estándar de Colombia)",
+        "id": 8
+    }
+]
