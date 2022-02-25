@@ -6,6 +6,7 @@ socket.on("mensajes", (msjs) => {
   const mensajesHTML = msjs
     .map((msj) => `<span class="badge active badge-info">${msj.nameChat}</span><div><input type="text" class="form-control-sm" value="${msj.mensaje}"></div>`)
     .join("<br>");
+    
   document.querySelector("p").innerHTML = mensajesHTML;
 });
 

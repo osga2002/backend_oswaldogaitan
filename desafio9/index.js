@@ -1,7 +1,8 @@
 const express = require("express");
 //cargamos el modulo handlebars
 const app = express();
-
+const { options } = require('./options/mariaDB.js')
+const knex = require('knex')(options)
 //-------------------------------------//
 
 //Uso de websockets
@@ -57,6 +58,13 @@ io.on("connection", (socket) => {
 
   socket.on("mensaje", (data) => {
     mensajes.push(data);
+    data.fechahora = new Date()
+    knex('mensajes').insert(data)
+    .then(()=> console.log("Mensaje Guardado"))
+    .catch((err)=>{ console.log(err) })
+    .finally(()=>{
+      knex.destroy();
+    })
     io.sockets.emit("mensajes", mensajes);
   });
 
@@ -68,6 +76,13 @@ io.on("connection", (socket) => {
 
   socket.on("producto", (data) => {
     listaProductos.push(data);
+    data.fechahora = new Date()
+     knex('productos').insert(data)
+    .then(()=> console.log("Producto Creado"))
+    .catch((err)=>{ console.log(err) })
+    .finally(()=>{
+      knex.destroy();
+    })
     io.sockets.emit("listaProductos", listaProductos);
   });
 });
