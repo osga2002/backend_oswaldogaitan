@@ -23,8 +23,6 @@ listarProductos.listadoProductos();
 
 let port = 8080 || process.env.port;
 
-
-
 app.get('*', (req, res) => {
   const error = {
       error: -2,
@@ -32,7 +30,6 @@ app.get('*', (req, res) => {
   }
   res.send(error)
 })
-
 
 productos.get("/", function (req, res) {
   let resp = listarProductos.listadoProductos().length !== 0
@@ -47,6 +44,7 @@ productos.get("/", function (req, res) {
   : { error: 'No hay Productos' }
   res.json(resp)
 });
+
 productos.get("/:id", (req, res) => {
   const id = req.params.id
   const all = listarProductos.getAll()
@@ -63,45 +61,76 @@ productos.get("/:id", function (req, res) {
 });
 
 productos.post("/", function (req, res) {
-  const prod = {
-    'producto' : req.body.producto,
-    'price': req.body.price,
-    'marca': req.body.marca,
-    'id': req.body.id
+  if (administrador) {
+    const prod = {
+      'producto' : req.body.producto,
+      'price': req.body.price,
+      'marca': req.body.marca,
+      'id': req.body.id
+    }
+    let resp = listarProductos.save(prod)
+      ? { productos: prod}
+      : { error: 'error al guardar el producto' }
+      res.json( resp )
+  } else {
+    res.send({
+      error: -1,
+      descripcion: `ruta '${req.url}' método ${req.method}, no autorizado para ingresar`
+    })
   }
-  let resp = listarProductos.save(prod)
-    ? { productos: prod}
-    : { error: 'error al guardar el producto' }
-    res.json( resp )
 });
 
 productos.put("/:id", function (req, res) {  
-  const { id } = req.params;
-  let resp = listarProductos.update(parseInt(id), req.body)
-  ? { Producto_Actualizado: req.body }
-  : { error: 'error al actualizar el producto' }
-  res.json( resp )
-});
-productos.delete("/:id", function (req, res) {
-    const { id } = req.params;
-    res.json({
-        msg: listarProductos.deleteById(parseInt(id))
-            ? 'producto eliminado'
-            : 'no se pudo eliminar el producto o el producto no existe'
+  if (administrador) {
+    const {
+      id
+    } = req.params;
+    let resp = listarProductos.update(parseInt(id), req.body) ?
+      {
+        Producto_Actualizado: req.body
+      } :
+      {
+        error: 'error al actualizar el producto'
+      }
+    res.json(resp)
+  } else {
+    res.send({
+      error: -1,
+      descripcion: `ruta '${req.url}' método ${req.method}, no autorizado para ingresar`
     })
+  }
 });
+
+productos.delete("/:id", function (req, res) {
+  if (administrador) {
+    const {
+      id
+    } = req.params;
+    res.json({
+      msg: listarProductos.deleteById(parseInt(id)) ?
+        'producto eliminado' :
+        'no se pudo eliminar el producto o el producto no existe'
+    })
+  } else {
+    res.send({
+      error: -1,
+      descripcion: `ruta '${req.url}' método ${req.method}, no autorizado para ingresar`
+    })
+  }
+});
+
 carrito.post("/", function (req, res) {
   const items = {
     'cliente' : req.body.cliente,
     'productos': req.body.productos,
     'catidadTotal': req.body.cantidad
   }
- console.log(items);
   let resp = carritoCompras.create(items)
     ? { carritoCompras: items}
     : { error: 'error al guardar el carrito' }
     res.json( resp )
 });
+
 carrito.get("/", function (req, res) {
   let resp = carritoCompras.listadoCarrito().length !== 0
       ? { Carrito: carritoCompras.listadoCarrito() }
@@ -115,6 +144,7 @@ carrito.get("/:id", function (req, res) {
   const search = all.find(res => res.id == id)
   res.json(search || { error: `Carrito no encontrado` })
 });
+
 carrito.delete("/:id", function (req, res) {
   const { id } = req.params;
     res.json({
@@ -123,19 +153,22 @@ carrito.delete("/:id", function (req, res) {
             : 'no se pudo eliminar el carrito no existe'
     })
 });
-carrito.delete("/:id/productos/:id_pro", function (req, res) {
+
+carrito.delete("/:id/producto/:id_pro", function (req, res) {
  const { id,id_pro } = req.params;
     res.json({
-        msg: carritoCompras.deleteCarritoProductoById(parseInt(id))
-            ? 'Carrito eliminado'
-            : 'no se pudo eliminar el carrito no existe'
+        msg: carritoCompras.deleteCarritoProductoById(parseInt(id), parseInt(id_pro))
+            ? 'Producto del Carrito eliminado '
+            : 'no se pudo eliminar el producto del carrito no existe'
     })
 });
-carrito.post("/:id/:productos", function (req, res) {
+
+carrito.put("/:id", function (req, res) {
   const { id } = req.params;
+  const productos = req.body;
     res.json({
-        msg: carritoCompras.deleteCarritoAllProductos(parseInt(id))
-            ? 'Carrito eliminado'
+        msg: carritoCompras.deleteCarritoAllProductos(parseInt(id),productos)
+            ? 'Carrito actualizados los items'
             : 'no se pudo eliminar el carrito no existe'
     })
 });

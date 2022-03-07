@@ -1,0 +1,240 @@
+Desafio Mongo DB
+
+Para ingresar mongo
+1. Crear base de datos
+use ecommerce
+Crear la coleccion "mensajes" e insertar 10 documentos
+db.mensajes.insert([
+    {
+        "id": "1",
+        "message": "Miss Terence Pagac",
+        "correo": "prueba1@gmail.com",
+        "fecha": "10/1/2022 15:25"
+    },
+    {
+        "id": "2",
+        "message": "Tammy Collier",
+        "correo": "prueba2@gmail.com",
+        "fecha": "15/1/2022 15:25"
+    },
+    {
+        "id": "3",
+        "message": "Rachael Rempel",
+        "correo": "prueba3@gmail.com",
+        "fecha": "18/1/2022 15:25"
+    },
+    {
+        "id": "4",
+        "message": "Ms. Randal Boyer",
+        "correo": "prueba4@gmail.com",
+        "fecha": "20/1/2022 15:25"
+    },
+    {
+        "id": "5",
+        "message": "Sequi illum ex ut. Ipsam labore nemo laborum ullam autem minus nulla aperiam. Autem voluptate non perspiciatis blanditiis iure nam. Facere tempora commodi qui ratione optio harum.",
+        "correo": "prueba5@gmail.com",
+        "fecha": "22/1/2022 15:25"
+    },
+    {
+        "id": "6",
+        "message": "nisi dolor dolores",
+        "correo": "prueba6@gmail.com",
+        "fecha": "23/1/2022 15:25"
+    },
+    {
+        "id": "7",
+        "message": "Chinese White Dolphin",
+        "correo": "prueba7@gmail.com",
+        "fecha": "2/2/2022 15:25"
+    },
+    {
+        "id": "8",
+        "message": "necessitatibus eligendi ullam",
+        "correo": "prueba8@gmail.com",
+        "fecha": "8/2/2022 15:25"
+    },
+    {
+        "id": "9",
+        "message": "Mrs. Cathy Kuvalis",
+        "correo": "prueba9@gmail.com",
+        "fecha": "27/1/2022 15:25"
+    },
+    {
+        "id": "10",
+        "message": "Georgia Emard",
+        "correo": "prueba10@gmail.com",
+        "fecha": "10/2/2022 15:25"
+    },
+    
+])
+Crear coleccion "productos" e insertar 10 documentos
+db.productos.insert([
+    {
+        "id": 1,
+        "timestamp": 1645500411247,
+        "producto": "Lamborghini Countach",
+        "descripcion": "Omnis quo et ut aut perferendis.",
+        "referencia": "et molestiae dolore",
+        "imagen": "http://placeimg.com/640/480",
+        "price": 450000000,
+        "stock": 7
+    },
+    {
+        "id": 2,
+        "timestamp": 1645500411247,
+        "producto": "Polestar Taurus",
+        "descripcion": "Repellat culpa sint sed.",
+        "referencia": "nesciunt iure eaque",
+        "imagen": "http://placeimg.com/640/480g",
+        "price": 350000000,
+        "stock": 7
+    },
+    {
+        "id": 3,
+        "timestamp": 1645500411247,
+        "producto": "BMW Colorado",
+        "descripcion": "Esse illum rerum.",
+        "referencia": "commodi repellendus aut",
+        "imagen": "http://placeimg.com/640/480",
+        "price": 2500000000,
+        "stock": 21
+    },
+    {
+        "id": 4,
+        "timestamp": 1645500411247,
+        "producto": "Audi Fortwo",
+        "descripcion": "Maiores excepturi accusamus doloremque omnis laborum vero.",
+        "referencia": "quo rerum suscipit",
+        "imagen": "http://placeimg.com/640/480",
+        "price": 158000000,
+        "stock": 6
+    },
+    {
+        "id": 5,
+        "timestamp": 1645500411247,
+        "producto": "Porsche Taurus",
+        "descripcion": "Omnis eos sed saepe odit.",
+        "referencia": "non eveniet culpa",
+        "imagen": "http://placeimg.com/640/480",
+        "price": 77000000,
+        "stock": 7
+    },
+    {
+        "id": 6,
+        "timestamp": 1645500411247,
+        "producto": "Tesla Model T",
+        "descripcion": "Nam suscipit hic occaecati aut velit repellendus aut.",
+        "referencia": "recusandae labore perferendis",
+        "imagen": "http://placeimg.com/640/480",
+        "price": 45000000,
+        "stock": 5
+    },
+    {
+        "id": 7,
+        "timestamp": 1645500411247,
+        "producto": "Bentley Camry",
+        "descripcion": "Dolorem autem ullam corrupti.",
+        "referencia": "omnis temporibus non",
+        "imagen": "http://placeimg.com/640/480",
+        "price": 18000000,
+        "stock": 23
+    },
+    {
+        "id": 8,
+        "timestamp": 1645500411247,
+        "producto": "Bugatti XTS",
+        "descripcion": "Voluptas voluptatem perspiciatis eum.",
+        "referencia": "provident eos deserunt",
+        "imagen": "http://placeimg.com/640/480",
+        "price": 15460000,
+        "stock": 12
+    },
+    {
+        "id": 9,
+        "timestamp": 1645500411247,
+        "producto": "Land Rover CTS",
+        "descripcion": "Occaecati voluptas ad et ipsa.",
+        "referencia": "facilis asperiores possimus",
+        "imagen": "http://placeimg.com/640/480",
+        "price": 25000000,
+        "stock": 8
+    },
+    {
+        "id": 10,
+        "timestamp": 1645500411247,
+        "producto": "Volvo Element",
+        "descripcion": "Quasi ab architecto et laudantium non sequi repudiandae enim.",
+        "referencia": "dolor voluptatum quibusdam",
+        "imagen": "http://placeimg.com/640/480",
+        "price": 15800000,
+        "stock": 10
+    }
+])
+Listar todo el contenido de las colecciones
+db.productos.find()
+db.mensajes.find()
+Contar cantidad de documentos almacenados
+db.productos.estimatedDocumentCount()
+db.mensajes.estimatedDocumentCount()
+Alternativa para mostrar cantidad de documentos almacenados
+Hay alguna desventaja de usar este formato? Me parece mucho más práctico
+
+db.productos.count()
+db.mensajes.count()
+CRUD
+Crear un nuevo producto
+db.productos.insert({
+    "id": 11,
+    "timestamp": 1645500411247,
+    "producto": "Smart 911",
+    "descripcion": "omnis tempore et",
+    "referencia": "alias autem sit",
+    "imagen": "http://placeimg.com/640/480",
+    "price": 123,
+    "stock": 5
+})
+Realizar consulta
+1 - Listar los productos con precio menor a 10000000 pesos
+db.productos.find( { price: { $lt: 10000000 } } )
+2 - Listar los productos con precio entre 3000 a 1000 pesos
+db.productos.find({ 
+    $and: [ 
+        { price: { $gte: 10000000 } },
+        { price: { $lte: 30000000 } }, 
+    ]})
+3 - Listar los productos con precio entre 30000000 a 10000000 pesos
+db.productos.find( { price: { $gt: 20000000 } } )
+4 - Mostrar el nombre del tercer producto más barato
+db.productos.find( {}, {"producto": 1}).sort({"price":1}).skip(2).limit(1)
+5 -Actualizar todos los productos con el campo stock en valor 100
+db.productos.upfecha(
+    {}, 
+    { $set: {stock: 10} },
+    true,
+    true
+)
+6 -Cambiar el stock a cero de los productos con precios mayores a 20000000
+db.productos.upfecha(
+    { price: {$gt: 20000000}}, 
+    { $set: {stock: 0} },
+    false,
+    true
+)
+7 -Borrar los productos con precio menor a 10000000 pesos
+db.productos.deleteMany(
+    { price: {$lt: 10000000}}
+)
+8 -Crear Usuario Read only
+db.createUser(
+    {
+        user: 'oswaldo',
+        pwd: 'jesus2022',
+        roles: [
+            {role: 'read', db:'ecommerce'}
+        ]
+    }
+)
+9 -Activar mongod en modo autenticación
+mongod --auth
+10 -Ingresar con el usuario y la base de datos
+mongo -u oswaldo -p jesus2022 --authenticationDatabase ecommerce

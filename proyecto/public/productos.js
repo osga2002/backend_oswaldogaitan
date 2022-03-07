@@ -10,7 +10,7 @@ class productosClass {
     listadoProductos() {
       const leer = fs.readFileSync("public/productos.txt", "utf-8");
       const contenido = JSON.parse(leer)
-      console.log(contenido);
+      //console.log(contenido);
       return contenido
     }
   
@@ -70,8 +70,8 @@ class productosClass {
     update(id, body) {
       const data = this.getAll()
       const producto = data.find(producto => producto.id === id)
-      console.log(producto);
-      console.log("Mi señor");
+      //console.log(producto);
+      //console.log("Mi señor");
       if (producto) {
         data.forEach(element => {
           if (element.id === id) {
@@ -95,10 +95,10 @@ class productosClass {
           if (error) {
               throw new Error(`Error en lectura: ${error} `)
           }
-          console.log('Lectura Correcta');
+          //console.log('Lectura Correcta');
           const verArchivo = JSON.parse(contenido)
           const aleatorio = verArchivo[Math.floor(Math.random()*verArchivo.length)];
-          console.log(aleatorio);
+          //console.log(aleatorio);
           const prod = JSON.stringify(aleatorio)
           return prod
       });
